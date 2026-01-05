@@ -1,117 +1,180 @@
 :root {
-  --bg:#f6f8fb;
-  --card:#fff;
-  --dunlop-sub:#ffe680;
-  --komp-sub:#ffd6d6;
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --dunlop-sub: #ffe680;
+  --komp-sub: #ffd6d6;
+}
+
+/* RESET */
+* {
+  box-sizing: border-box;
 }
 
 body {
-  margin:0;
-  font-family:Inter,Arial,sans-serif;
-  background:var(--bg);
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: var(--bg);
 }
 
+/* WRAPPER */
 .wrap {
-  max-width:1300px;
-  margin:16px auto;
-  padding:10px;
+  max-width: 1500px;
+  margin: 16px auto;
+  padding: 16px 20px; /* ⬅️ bikin tidak mentok kiri kanan */
 }
 
-/* HEADER */
-header h1 {
-  margin:0 0 14px;
-  font-size:20px;
+/* ================= HEADER ================= */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
-/* GRID */
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* ZOOM & FULLSCREEN BUTTON */
+.zoom-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.zoom-controls button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background: #eaeaea;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.zoom-controls button:hover {
+  background: #d5d5d5;
+}
+
+/* ================= GRID CHART ================= */
 .grid-4 {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
-  margin-bottom:22px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 22px;
 }
 
 /* CARD */
 .card.small {
-  background:var(--card);
-  padding:12px;
-  border-radius:12px;
-  box-shadow:0 4px 14px rgba(0,0,0,.1);
-  height:350px;            
-  display:flex;
-  flex-direction:column;
+  background: var(--card);
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  height: 350px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card.small h3 {
-  margin:0 0 6px;
-  font-size:14px;
+  margin: 0 0 6px;
+  font-size: 14px;
 }
 
 .card.small h3 span {
-  font-size:11px;
-  color:#666;
+  font-size: 11px;
+  color: #666;
 }
 
 /* CHART */
 .small-chart {
-  width:100%;
-  height:360px;             
+  width: 100%;
+  height: 100%;
 }
 
-/* TABLE GRID */
+/* ================= TABLE SECTION ================= */
 .grid-2-table {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
 }
 
-/* TABLE */
+/* TABLE CARD */
 .table-wrap {
-  background:var(--card);
-  padding:14px;
-  border-radius:12px;
-  box-shadow:0 4px 14px rgba(0,0,0,.1);
+  background: var(--card);
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
 }
 
 .table-wrap h3 {
-  margin:0 0 6px;
+  margin: 0 0 6px;
 }
 
+/* TABLE */
 table {
-  width:100%;
-  border-collapse:collapse;
-  font-size:13px;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
 }
 
-th,td {
-  padding:8px 6px;
-  border-bottom:1px solid #e4e4e4;
-  text-align:center;
+th,
+td {
+  padding: 8px 6px;
+  border-bottom: 1px solid #e4e4e4;
+  text-align: center;
 }
 
-thead tr:first-child th { background:#ececec; }
-thead .dunlop-sub { background:var(--dunlop-sub); }
-thead .komp-sub { background:var(--komp-sub); }
+thead tr:first-child th {
+  background: #ececec;
+}
 
-tbody tr:nth-child(even) { background:#f9f9f9; }
+thead .dunlop-sub {
+  background: var(--dunlop-sub);
+}
+
+thead .komp-sub {
+  background: var(--komp-sub);
+}
+
+tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
 
 .tdname {
-  text-align:left;
-  padding-left:12px;
+  text-align: left;
+  padding-left: 12px;
 }
 
-/* ANIMATION */
+/* ================= ANIMATION ================= */
 @keyframes nyundul {
-  from {transform:translateY(12px);opacity:0}
-  to {transform:none;opacity:1}
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-/* RESPONSIVE */
-@media(max-width:1100px){
-  .grid-4{grid-template-columns:repeat(2,1fr)}
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1100px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
-@media(max-width:900px){
-  .grid-2-table{grid-template-columns:1fr}
-  .card.small{height:380px}
-  .small-chart{height:300px}
+
+@media (max-width: 900px) {
+  .grid-2-table {
+    grid-template-columns: 1fr;
+  }
+
+  .card.small {
+    height: 380px;
+  }
+
+  .small-chart {
+    height: 300px;
+  }
 }
