@@ -123,3 +123,46 @@ function radar(dS,kS,dC,kC,dN,kN){
     ]
   });
 }
+
+let zoomLevel = 1;
+const ZOOM_STEP = 0.1;
+const MIN_ZOOM = 0.7;
+const MAX_ZOOM = 1.3;
+
+const wrap = document.querySelector('.wrap');
+
+function applyZoom() {
+  wrap.style.transform = `scale(${zoomLevel})`;
+  wrap.style.transformOrigin = 'top center';
+
+  // refresh layout + Highcharts
+  setTimeout(() => {
+    window.dispatchEvent(new Event('resize'));
+  }, 150);
+}
+
+document.getElementById('zoom-in').onclick = () => {
+  if (zoomLevel < MAX_ZOOM) {
+    zoomLevel += ZOOM_STEP;
+    applyZoom();
+  }
+};
+
+document.getElementById('zoom-out').onclick = () => {
+  if (zoomLevel > MIN_ZOOM) {
+    zoomLevel -= ZOOM_STEP;
+    applyZoom();
+  }
+};
+
+const fullscreenBtn = document.getElementById('fullscreen');
+
+fullscreenBtn.addEventListener('click', () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+    fullscreenBtn.textContent = '⛶';
+  } else {
+    document.exitFullscreen();
+    fullscreenBtn.textContent = '⛶';
+  }
+});
